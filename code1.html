@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alumni Network Portal</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #007BFF;
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 2rem auto;
+    }
+
+    h1, h2 {
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      background-color: #007BFF;
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 2rem auto;
+    }
+
+    h1, h2 {
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      background-color: #007BFF;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    /* Alumni List */
+    .alumni-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+
+    .alumni-card {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 1rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .alumni-card h3 {
+      margin-top: 0;
+    }
+
+    /* Form Styles */
+    form {
+      background-color: white;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Alumni Network Portal</h1>
+    <p>Connect with fellow alumni and grow your network!</p>
+  </header>
+
+  <div class="container">
+    <!-- Form to Add New Alumni -->
+    <form id="add-alumni-form">
+      <h2>Add New Alumni</h2>
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="text" id="profession" placeholder="Profession" required>
+      <textarea id="bio" placeholder="Short Bio" rows="4" required></textarea>
+      <button type="submit" class="btn">Add Alumni</button>
+    </form>
+
+    <!-- Alumni List -->
+    <h2>Alumni Directory</h2>
+    <div class="alumni-list" id="alumni-list">
+      <!-- Alumni cards will be dynamically added here -->
+    </div>
+  </div>
+
+  <script>
+    // JavaScript to Handle Form Submission and Alumni List
+    const alumniList = document.getElementById('alumni-list');
+    const form = document.getElementById('add-alumni-form');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Get form values
+      const name = document.getElementById('name').value;
+      const profession = document.getElementById('profession').value;
+      const bio = document.getElementById('bio').value;
+
+      // Create a new alumni card
+      const card = document.createElement('div');
+      card.classList.add('alumni-card');
+      card.innerHTML = `
+        <h3>${name}</h3>
+        <p><strong>Profession:</strong> ${profession}</p>
+        <p>${bio}</p>
+      `;
+
+      // Add the card to the alumni list
+      alumniList.appendChild(card);
+
+      // Clear form inputs
+      form.reset();
+    });
+     </script>
+</body>
+</html>
